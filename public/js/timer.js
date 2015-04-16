@@ -1,4 +1,3 @@
-
 var Timer = function(cycles) {
 		this.inhaleLength = 0;
 		this.exhaleLength = 0;
@@ -16,6 +15,7 @@ var Timer = function(cycles) {
 
 	Timer.prototype.elapsedTime = function(){
 		var time = new Date();
-		this.elapsedT = (time.getTime() - this.startT)
+		millis = (time.getTime() - this.startT)
+		this.elapsedT = (millis / 1000).toFixed(1)
 		return this.elapsedT;
 	}
