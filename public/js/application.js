@@ -1,28 +1,45 @@
 $(document).ready(function() {
-// timer object
+// session object
 
-	timer = new Timer();
-	var count
+	session = new Session();
+	var intervalID
 	// mousetrap binds
-	Mousetrap.bind('space', function(){ //toggle timer state
-			if (count) {
-				clearInterval(count);
+
+	Mousetrap.bind('space', function(){ 
+		// dont let user go through more than X cycles
+		// while (session.breathCounter  <= 2*session.cycles ){
+			if (intervalID) {
+				clearInterval(intervalID);
 			}
-			timer.startTime();
-			count = setInterval(function(){
-				$('div.count').html(timer.elapsedTime())
-				// console.log(timer.elapsedTime())
-			}, 300);
+			session.setStartTime();
+			intervalID = setInterval(function(){
+				
+				$('div.count').html(session.currentBreathTime())
+
+			}, 100);
+			$('div.last-breath').html("last breath:  " + session.currentBreath)
+
+			if (session.breathCounter % 2 !== 0){
+				session.inhaleArray.push(session.currentBreath)
+			} else {
+				session.exhaleArray.push(session.currentBreath)
+			}
+			session.setLongestInhale();
+
+			$('div.longest-inhale').html("longest inhale:  " + session.longestInhale)
+			session.breathCounter ++
+		// }
+		// session.breathCounter = 0;
 	});
 
-// timer.cycles (for loop)
-	// when the spacebar is pressed, toggle timer, toggle prompt
+
+// session.cycles (for loop)
+	// when the spacebar is pressed, toggle session, toggle prompt
 		// startTime = getTime
 		// continously update div with "time since startTime"
 
-	// when spacebar is pressed again, toggle timer, toggle prompt
+	// when spacebar is pressed again, toggle session, toggle prompt
 		// startTime = getTime
 		// continously update div with "time since startTime"
-
 });
 

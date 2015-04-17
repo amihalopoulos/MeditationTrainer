@@ -24,8 +24,12 @@ nav{
 }
 
 .count{
-  margin-top: 200px;
+  margin-top: 20px;
   font-size: 10em;
+}
+
+.last-breath{
+  margin-top: 100px;
 }
 
 #home-button{
@@ -44,7 +48,6 @@ nav ul{
     vertical-align: middle;
     list-style-type: none;
     overflow: hidden;
-
     color: inherit;
 }
 
