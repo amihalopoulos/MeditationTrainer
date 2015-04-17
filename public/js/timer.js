@@ -47,8 +47,9 @@ var Session = function(cycles) {
 		return this.longestInhale;
 	}
 
-	Session.prototype.averageInhale = function(){
+	Session.prototype.setAverageInhale = function(){
 
+		retru
 	}
 
 	Session.prototype.longestExhale = function(){

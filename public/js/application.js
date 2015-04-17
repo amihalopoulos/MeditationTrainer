@@ -19,17 +19,24 @@ $(document).ready(function() {
 			}, 100);
 			$('div.last-breath').html("last breath:  " + session.currentBreath)
 
+			// push breathes to arrays
 			if (session.breathCounter % 2 !== 0){
 				session.inhaleArray.push(session.currentBreath)
+			// set longest inhale & display
+				session.setLongestInhale();
+				$('div#longest-inhale').html("longest inhale:  " + session.longestInhale)
+			// set average inhale & display
+				session.setLongestInhale();
+
 			} else {
 				session.exhaleArray.push(session.currentBreath)
 			}
-			session.setLongestInhale();
+			
+			// set 
 
-			$('div.longest-inhale').html("longest inhale:  " + session.longestInhale)
+
+
 			session.breathCounter ++
-		// }
-		// session.breathCounter = 0;
 	});
 
 
