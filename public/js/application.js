@@ -1,6 +1,5 @@
 $(document).ready(function() {
 // session object
-
 	session = new Session();
 	var intervalID
 	// mousetrap binds
@@ -11,31 +10,34 @@ $(document).ready(function() {
 			if (intervalID) {
 				clearInterval(intervalID);
 			}
+
 			session.setStartTime();
 			intervalID = setInterval(function(){
-				
-				$('div.count').html(session.currentBreathTime())
-
+				$('div#count').html(session.currentBreathTime())
 			}, 100);
-			$('div.last-breath').html("last breath:  " + session.currentBreath)
 
+			$('div# last-breath').html("last breath:  " + session.currentBreath)
+
+
+			// INHALES//
+			//************************
 			// push breathes to arrays
 			if (session.breathCounter % 2 !== 0){
 				session.inhaleArray.push(session.currentBreath)
 			// set longest inhale & display
 				session.setLongestInhale();
-				$('div#longest-inhale').html("longest inhale:  " + session.longestInhale)
+				$('#longest-inhale').html("longest inhale:  " + session.longestInhale)
 			// set average inhale & display
 				session.setLongestInhale();
 
 			} else {
+				// EXHALES //
+				//***********************
 				session.exhaleArray.push(session.currentBreath)
+				session.setlongestExhale();
+				$('#longest-exhale').html("longest exhale:  " + session.longestExhale)
+				
 			}
-			
-			// set 
-
-
-
 			session.breathCounter ++
 	});
 

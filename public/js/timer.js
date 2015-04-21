@@ -2,7 +2,7 @@ var Session = function(cycles) {
 		this.startTimeime;
 		this.currentBreath = 0;
 		this.cycles = cycles || 4;
-		this.inhaleArray = [];
+		this.inhaleArray = [10,20,10,20,10,20,10,20];
 		this.exhaleArray = [];
 		// inhales
 		this.longestInhale = 0;
@@ -48,8 +48,11 @@ var Session = function(cycles) {
 	}
 
 	Session.prototype.setAverageInhale = function(){
+		sum = inhaleArray.reduce(function(sum, inhale) {
+			return sum + inhale}, 0)
 
-		retru
+		}
+		return sum/inhaleArray.length
 	}
 
 	Session.prototype.longestExhale = function(){
