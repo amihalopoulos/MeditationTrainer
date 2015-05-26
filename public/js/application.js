@@ -1,7 +1,54 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+// session object
+	session = new Session();
+	var intervalID
+	// mousetrap binds
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+	Mousetrap.bind('space', function(){ 
+		// dont let user go through more than X cycles
+		// while (session.breathCounter  <= 2*session.cycles ){
+			if (intervalID) {
+				clearInterval(intervalID);
+			}
+
+			session.setStartTime();
+			intervalID = setInterval(function(){
+				$('div#count').html(session.currentBreathTime())
+			}, 100);
+
+			$('div# last-breath').html("last breath:  " + session.currentBreath)
+
+
+			// INHALES//
+			//************************
+			// push breathes to arrays
+			if (session.breathCounter % 2 !== 0){
+				session.inhaleArray.push(session.currentBreath)
+			// set longest inhale & display
+				session.setLongestInhale();
+				$('#longest-inhale').html("longest inhale:  " + session.longestInhale)
+			// set average inhale & display
+				session.setLongestInhale();
+
+			} else {
+				// EXHALES //
+				//***********************
+				session.exhaleArray.push(session.currentBreath)
+				session.setlongestExhale();
+				$('#longest-exhale').html("longest exhale:  " + session.longestExhale)
+				
+			}
+			session.breathCounter ++
+	});
+
+
+// session.cycles (for loop)
+	// when the spacebar is pressed, toggle session, toggle prompt
+		// startTime = getTime
+		// continously update div with "time since startTime"
+
+	// when spacebar is pressed again, toggle session, toggle prompt
+		// startTime = getTime
+		// continously update div with "time since startTime"
 });
+
